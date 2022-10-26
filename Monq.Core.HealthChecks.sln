@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monq.Core.HealthChecks", "src\Monq.Core.HealthChecks\Monq.Core.HealthChecks.csproj", "{4C67A8AB-EEA5-4878-8F04-D19D759A38EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{77F8A73E-7BEA-4A8D-A381-7A04E666A0B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Core.HealthChecks.Tests", "src\Monq.Core.HealthChecks.Tests\Monq.Core.HealthChecks.Tests.csproj", "{DFBE113D-A09B-4533-BB7E-77942ED0E890}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C67A8AB-EEA5-4878-8F04-D19D759A38EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C67A8AB-EEA5-4878-8F04-D19D759A38EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C67A8AB-EEA5-4878-8F04-D19D759A38EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C67A8AB-EEA5-4878-8F04-D19D759A38EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBE113D-A09B-4533-BB7E-77942ED0E890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBE113D-A09B-4533-BB7E-77942ED0E890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBE113D-A09B-4533-BB7E-77942ED0E890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBE113D-A09B-4533-BB7E-77942ED0E890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C67A8AB-EEA5-4878-8F04-D19D759A38EE} = {77F8A73E-7BEA-4A8D-A381-7A04E666A0B5}
+		{DFBE113D-A09B-4533-BB7E-77942ED0E890} = {77F8A73E-7BEA-4A8D-A381-7A04E666A0B5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {936B9A81-08D7-4851-93E8-7479C17B36A7}
+	EndGlobalSection
+EndGlobal
