@@ -5,7 +5,7 @@ namespace Monq.Core.HealthChecks
 {
     public static class HealthChecksExtensions
     {
-        public static IHealthChecksBuilder RabbitMQCoreClient(this IHealthChecksBuilder healthChecksBuilder) =>
+        public static IHealthChecksBuilder AddRabbitMQCoreClient(this IHealthChecksBuilder healthChecksBuilder) =>
             healthChecksBuilder.AddCheck<RabbitMQCoreClientHealthCheck>("RabbitMQ", tags: new[] { "services" });
     }
 }
