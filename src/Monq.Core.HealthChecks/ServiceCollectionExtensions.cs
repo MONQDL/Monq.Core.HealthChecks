@@ -14,7 +14,7 @@ namespace Monq.Core.HealthChecks
         {
             app.UseHealthChecks("/ready", new HealthCheckOptions
             {
-                Predicate = r => r.Tags.Contains("services")
+                Predicate = r => r.Tags.Contains(Constants.TagServicesName)
             });
             return app;
         }

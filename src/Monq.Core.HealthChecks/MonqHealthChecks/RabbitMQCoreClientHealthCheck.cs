@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Monq.Core.HealthChecks.MonqHealthChecks
 {
-    public class RabbitMQCoreClientHealthCheck : IHealthCheck
+    internal sealed class RabbitMQCoreClientHealthCheck : IHealthCheck
     {
         readonly IQueueService _queueService;
 
