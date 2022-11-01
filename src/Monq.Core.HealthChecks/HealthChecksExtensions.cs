@@ -18,8 +18,12 @@ namespace Monq.Core.HealthChecks
         {
             var redisOptions = new RedisOptions();
             configuration.Bind(redisOptions);
-            return healthChecksBuilder.AddRedis(redisOptions.ToRedisConfig().ToString(includePassword: true),
-                    tags: new string[] { Constants.TagServicesName });
+
+            return healthChecksBuilder.Add(new HealthCheckRegistration(
+               "Redis",
+               sp => new RedisHealthCheck(redisOptions.ToRedisConfig().ToString(includePassword: true)),
+               null,
+               tags: new string[] { Constants.TagServicesName }));
         }
 
         public static IHealthChecksBuilder AddMonqDbContextCheck<TContext>(this IHealthChecksBuilder healthChecksBuilder)
@@ -35,6 +39,5 @@ namespace Monq.Core.HealthChecks
                null,
                tags: new string[] { Constants.TagServicesName }));
         }
-
     }
 }
