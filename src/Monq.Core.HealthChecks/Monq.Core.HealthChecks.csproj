@@ -25,10 +25,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="Monq.Core.Redis" Version="1.0.2-rev-3361436183" />
-    <PackageReference Include="RabbitMQCoreClient" Version="5.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Monq.Core.Redis" Version="1.0.2" />
+    <PackageReference Include="RabbitMQCoreClient" Version="5.1.0" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="6.0.4" />
+    <PackageReference Include="ClickHouse.Client" Version="2.3.0.326" />
   </ItemGroup>
 
   <ItemGroup>
