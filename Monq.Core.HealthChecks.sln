@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monq.Core.HealthChecks", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{77F8A73E-7BEA-4A8D-A381-7A04E666A0B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Core.HealthChecks.Tests", "src\Monq.Core.HealthChecks.Tests\Monq.Core.HealthChecks.Tests.csproj", "{DFBE113D-A09B-4533-BB7E-77942ED0E890}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monq.Core.HealthChecks.Tests", "src\Monq.Core.HealthChecks.Tests\Monq.Core.HealthChecks.Tests.csproj", "{DFBE113D-A09B-4533-BB7E-77942ED0E890}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3DF51007-CDB5-40FE-8F22-8747B24A0F86}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		.github\workflows\netcorelibrary.yml = .github\workflows\netcorelibrary.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
