@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ArangoDB.Client;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -41,11 +42,11 @@ namespace Monq.Core.HealthChecks
         }
 
         public static IHealthChecksBuilder AddMonqArangoDbCheck(this IHealthChecksBuilder healthChecksBuilder,
-            string connectionString)
+            DatabaseSharedSetting settings)
         {
             return healthChecksBuilder.Add(new HealthCheckRegistration(
                "ArangoDb",
-               sp => new ArangoDbHealthCheck(connectionString),
+               sp => new ArangoDbHealthCheck(settings),
                null,
                tags: new string[] { Constants.TagServicesName }));
         }
