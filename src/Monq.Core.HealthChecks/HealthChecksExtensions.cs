@@ -39,5 +39,15 @@ namespace Monq.Core.HealthChecks
                null,
                tags: new string[] { Constants.TagServicesName }));
         }
+
+        public static IHealthChecksBuilder AddMonqArangoDbCheck(this IHealthChecksBuilder healthChecksBuilder,
+            string connectionString)
+        {
+            return healthChecksBuilder.Add(new HealthCheckRegistration(
+               "ArangoDb",
+               sp => new ArangoDbHealthCheck(connectionString),
+               null,
+               tags: new string[] { Constants.TagServicesName }));
+        }
     }
 }

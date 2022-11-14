@@ -29,6 +29,7 @@
     <PackageReference Include="Monq.Core.Redis" Version="1.0.2" />
     <PackageReference Include="RabbitMQCoreClient" Version="5.1.0" />
     <PackageReference Include="ClickHouse.Client" Version="2.3.0.326" />
+    <PackageReference Include="ArangoDB.Client" Version="0.7.70" />
   </ItemGroup>
 
   <ItemGroup>
