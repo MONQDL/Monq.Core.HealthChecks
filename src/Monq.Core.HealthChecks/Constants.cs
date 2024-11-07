@@ -1,7 +1,6 @@
-﻿namespace Monq.Core.HealthChecks
+namespace Monq.Core.HealthChecks;
+
+internal static class Constants
 {
-    internal static class Constants
-    {
-        public const string TagServicesName = "services";
-    }
+    public const string TagServicesName = "services";
 }

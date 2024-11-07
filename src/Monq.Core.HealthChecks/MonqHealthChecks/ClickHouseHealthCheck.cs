@@ -4,38 +4,37 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Monq.Core.HealthChecks.MonqHealthChecks
+namespace Monq.Core.HealthChecks.MonqHealthChecks;
+
+internal sealed class ClickHouseHealthCheck : IHealthCheck
 {
-    internal sealed class ClickHouseHealthCheck : IHealthCheck
+    readonly string _connectionString;
+    public ClickHouseHealthCheck(string connectionString)
     {
-        readonly string _connectionString;
-        public ClickHouseHealthCheck(string connectionString)
-        {
-            if (string.IsNullOrEmpty(connectionString))
-                throw new ArgumentException($"{nameof(connectionString)} is null or empty.", nameof(connectionString));
+        if (string.IsNullOrEmpty(connectionString))
+            throw new ArgumentException($"{nameof(connectionString)} is null or empty.", nameof(connectionString));
 
-            _connectionString = connectionString;
+        _connectionString = connectionString;
+    }
+
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    {
+        ClickHouseConnection? connection = null;
+        try
+        {
+            connection = new ClickHouseConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            return HealthCheckResult.Healthy("A healthy result.");
         }
-
-        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        catch (Exception e)
         {
-            ClickHouseConnection? connection = null;
-            try
-            {
-                connection = new ClickHouseConnection(_connectionString);
-                await connection.OpenAsync(cancellationToken);
-                return HealthCheckResult.Healthy("A healthy result.");
-            }
-            catch (Exception e)
-            {
-                return 
-                    HealthCheckResult.Unhealthy("An unhealthy result.", exception: e);
-            }
-            finally
-            {
-                connection?.Close();
-                connection?.Dispose();
-            }
+            return
+                HealthCheckResult.Unhealthy("An unhealthy result.", exception: e);
+        }
+        finally
+        {
+            connection?.Close();
+            connection?.Dispose();
         }
     }
 }
