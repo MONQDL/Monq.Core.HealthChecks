@@ -24,8 +24,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
-    <PackageReference Include="Monq.Core.Redis" Version="2.0.0-rev-11718527325" />
-    <PackageReference Include="RabbitMQCoreClient" Version="6.1.0-rev-11686294861" />
+    <PackageReference Include="Monq.Core.Redis" Version="2.0.0" />
+    <PackageReference Include="RabbitMQCoreClient" Version="6.1.0" />
     <PackageReference Include="ClickHouse.Client" Version="2.3.0.326" />
     <PackageReference Include="ArangoDB.Client" Version="0.7.70" />
   </ItemGroup>
