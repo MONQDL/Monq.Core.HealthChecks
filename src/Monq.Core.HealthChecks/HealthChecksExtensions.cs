@@ -5,7 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Monq.Core.HealthChecks.MonqHealthChecks;
 using Monq.Core.Redis.Configuration;
-using Monq.Core.Redis.Extentions;
+using Monq.Core.Redis.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Monq.Core.HealthChecks;
 
@@ -14,9 +15,11 @@ public static class HealthChecksExtensions
     public static IHealthChecksBuilder AddMonqRabbitMQCheck(this IHealthChecksBuilder healthChecksBuilder) =>
         healthChecksBuilder.AddCheck<RabbitMQCoreClientHealthCheck>("RabbitMQ", tags: new[] { Constants.TagServicesName });
 
+    [RequiresUnreferencedCode("Configuration binding requires unreferenced code")]
     public static IHealthChecksBuilder AddMonqRedisCheck(this IHealthChecksBuilder healthChecksBuilder,
         IConfiguration configuration)
     {
+        // TODO: Use source generator after drop dotnet 7.
         var redisOptions = new RedisOptions();
         configuration.Bind(redisOptions);
 

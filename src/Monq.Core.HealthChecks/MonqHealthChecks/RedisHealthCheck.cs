@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Monq.Core.HealthChecks.MonqHealthChecks;
 
-public class RedisHealthCheck : IHealthCheck
+internal sealed class RedisHealthCheck : IHealthCheck
 {
     private static readonly ConcurrentDictionary<string, ConnectionMultiplexer> _connections = new();
     private readonly string _redisConnectionString;
@@ -17,6 +17,7 @@ public class RedisHealthCheck : IHealthCheck
         _redisConnectionString = redisConnectionString ?? throw new ArgumentNullException(nameof(redisConnectionString));
     }
 
+    /// <inheritdoc />
     public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
         try
@@ -28,7 +29,7 @@ public class RedisHealthCheck : IHealthCheck
                 if (!_connections.TryAdd(_redisConnectionString, connection))
                 {
                     // Dispose new connection which we just created, because we don't need it.
-                    connection.Dispose();
+                    await connection.DisposeAsync();
                     connection = _connections[_redisConnectionString];
                 }
             }
@@ -67,7 +68,8 @@ public class RedisHealthCheck : IHealthCheck
         catch (Exception ex)
         {
             _connections.TryRemove(_redisConnectionString, out var connection);
-            connection?.Dispose();
+            if (connection != null)
+                await connection.DisposeAsync();
             return new HealthCheckResult(context.Registration.FailureStatus, exception: ex);
         }
     }
