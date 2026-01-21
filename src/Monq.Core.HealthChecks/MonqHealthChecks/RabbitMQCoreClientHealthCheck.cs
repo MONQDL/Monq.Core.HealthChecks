@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using RabbitMQCoreClient;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +16,7 @@ internal sealed class RabbitMQCoreClientHealthCheck : IHealthCheck
 
     public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
-        var healthCheckResultHealthy = _queueService.Connection.IsOpen;
+        var healthCheckResultHealthy = _queueService.Connection?.IsOpen ?? false;
 
         if (healthCheckResultHealthy)
         {
@@ -25,6 +25,6 @@ internal sealed class RabbitMQCoreClientHealthCheck : IHealthCheck
         }
 
         return Task.FromResult(
-            HealthCheckResult.Unhealthy("An unhealthy result."));
+            HealthCheckResult.Unhealthy("Connection to RabbitMQ is not opened yet."));
     }
 }
