@@ -1,4 +1,4 @@
-﻿using ClickHouse.Client.ADO;
+using ClickHouse.Driver.ADO;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System;
 using System.Threading;
@@ -33,8 +33,11 @@ internal sealed class ClickHouseHealthCheck : IHealthCheck
         }
         finally
         {
-            connection?.Close();
-            connection?.Dispose();
+            if (connection != null)
+            {
+                await connection.CloseAsync();
+                await connection.DisposeAsync();
+            }
         }
     }
 }

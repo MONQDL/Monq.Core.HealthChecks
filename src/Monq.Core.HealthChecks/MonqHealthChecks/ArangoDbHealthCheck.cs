@@ -1,4 +1,4 @@
-﻿using ArangoDB.Client;
+using ArangoDB.Client;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System;
 using System.Threading;
