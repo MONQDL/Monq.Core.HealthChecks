@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace Monq.Core.HealthChecks;
 
-public static class ServiceCollectionExtensions
+/// <summary>
+/// IApplicationBuilder extension methods.
+/// </summary>
+public static class ApplicationBuilderExtensions
 {
     /// <summary>
     /// Adds a middleware that provides health check status.
